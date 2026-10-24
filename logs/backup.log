@@ -1,0 +1,274 @@
+/bin/sh: /opt/homebrew/bin/bench: No such file or directory
+Backup failed for Site manpower.localhost. Database or site_config.json may be corrupted
+Traceback with variables (most recent call last):
+  File "apps/frappe/frappe/commands/site.py", line 881, in backup
+    odb = scheduled_backup(
+      context = CliCtxObj(force=False, profile=False, sites=['manpower.localhost'], verbose=True)
+      with_files = False
+      backup_path = None
+      backup_path_db = None
+      backup_path_files = None
+      backup_path_private_files = None
+      backup_path_conf = None
+      ignore_backup_conf = False
+      verbose = True
+      compress = False
+      include = ''
+      exclude = ''
+      old_backup_metadata = False
+      scheduled_backup = <function scheduled_backup at 0x10c3f1c70>
+      exit_code = 0
+      rollback_callback = None
+      site = 'manpower.localhost'
+  File "apps/frappe/frappe/utils/backups.py", line 589, in scheduled_backup
+    return new_backup(
+      older_than = 6
+      ignore_files = True
+      backup_path = None
+      backup_path_db = None
+      backup_path_files = None
+      backup_path_private_files = None
+      backup_path_conf = None
+      ignore_conf = False
+      include_doctypes = ''
+      exclude_doctypes = ''
+      compress = False
+      force = True
+      verbose = True
+      old_backup_metadata = False
+      rollback_callback = frappe.utils.CallbackManager()
+  File "apps/frappe/frappe/utils/backups.py", line 647, in new_backup
+    odb.get_backup(older_than, ignore_files, force=force)
+      older_than = 6
+      ignore_files = True
+      backup_path = None
+      backup_path_db = None
+      backup_path_files = None
+      backup_path_private_files = None
+      backup_path_conf = None
+      ignore_conf = False
+      include_doctypes = ''
+      exclude_doctypes = ''
+      compress = False
+      force = True
+      verbose = True
+      old_backup_metadata = False
+      rollback_callback = frappe.utils.CallbackManager()
+      odb = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261023_120002', user='_e974f0a15eefec3b', verbose=True)
+  File "apps/frappe/frappe/utils/backups.py", line 191, in get_backup
+    self.delete_if_step_fails(self.take_dump, self.backup_path_db)
+      self = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261023_120002', user='_e974f0a15eefec3b', verbose=True)
+      older_than = 6
+      ignore_files = True
+      force = True
+      last_db = False
+      last_file = False
+      last_private_file = False
+      site_config_backup_path = False
+  File "apps/frappe/frappe/utils/backups.py", line 528, in delete_if_step_fails
+    raise e
+      self = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261023_120002', user='_e974f0a15eefec3b', verbose=True)
+      step = <bound method BackupGenerator.take_dump of <frappe.utils.backups.BackupGenerator object at 0x10c5ad6a0>>
+      paths = ('./manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz')
+      path = './manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz'
+  File "apps/frappe/frappe/utils/backups.py", line 523, in delete_if_step_fails
+    step()
+      self = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261023_120002', user='_e974f0a15eefec3b', verbose=True)
+      step = <bound method BackupGenerator.take_dump of <frappe.utils.backups.BackupGenerator object at 0x10c5ad6a0>>
+      paths = ('./manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz')
+      path = './manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz'
+  File "apps/frappe/frappe/utils/backups.py", line 465, in take_dump
+    frappe.throw(
+      self = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261023_120002', user='_e974f0a15eefec3b', verbose=True)
+      frappe = <module 'frappe' from 'apps/frappe/frappe/__init__.py'>
+      shlex = <module 'shlex' from '/opt/homebrew/Cellar/python@3.14/3.14.9/Frameworks/Python.framework/Versions/3.14/lib/python3.14/shlex.py'>
+      get_app_branch = <function get_app_branch at 0x10c5fb270>
+      gzip_exc = '/usr/bin/gzip'
+      database_header_content = ['begin frappe metadata', '[frappe]', 'version = 16.52.0', 'branch = version-16', 'end frappe metadata', '']
+      generated_header = '-- begin frappe metadata
+      -- [frappe]
+      -- version = 16.52.0
+      -- branch = version-16
+      -- end frappe metadata
+      -- 
+      '
+      f = <_io.TextIOWrapper name='./manpower.localhost/private/backups/20261023_120002-manpower_localhost-database.sql.gz' encoding='UTF-8'>
+      cmd = []
+      extra = []
+      get_command = <function get_command at 0x10ba4ab90>
+      bin = None
+      args = ['--user=_e974f0a15eefec3b', '--host=127.0.0.1', '--port=3306', '--password=E9IAjaEFfgV2Trsh', '--single-transaction', '--quick', '--lock-tables=false', '_e974f0a15eefec3b']
+      bin_name = 'mariadb-dump'
+  File "apps/frappe/frappe/utils/messages.py", line 159, in throw
+    msgprint(
+      msg = 'mariadb-dump not found in PATH! This is required to take a backup.'
+      exc = frappe.exceptions.ExecutableNotFound
+      title = None
+      is_minimizable = False
+      wide = False
+      as_list = False
+      primary_action = None
+      allow_dangerous_html = False
+  File "apps/frappe/frappe/utils/messages.py", line 118, in msgprint
+    _raise_exception()
+      msg = 'mariadb-dump not found in PATH! This is required to take a backup.'
+      title = None
+      raise_exception = frappe.exceptions.ExecutableNotFound
+      as_table = False
+      as_list = False
+      indicator = 'red'
+      alert = False
+      primary_action = None
+      is_minimizable = False
+      wide = False
+      realtime = False
+      allow_dangerous_html = False
+      clean_html = <function clean_html at 0x10b43e2a0>
+      _raise_exception = <function msgprint.<locals>._raise_exception at 0x10c5e1170>
+      inspect = <module 'inspect' from '/opt/homebrew/Cellar/python@3.14/3.14.9/Frameworks/Python.framework/Versions/3.14/lib/python3.14/inspect.py'>
+      out = {'message': 'mariadb-dump not found in PATH! This is required to take a backup.', 'as_table': False, 'title': 'Message', 'indicator': 'red', 'raise_exception': 1, '__frappe_exc_id': '8893e832bc8282d0737e02da3ae625482a613e8d566678eae64f7e1d'}
+  File "apps/frappe/frappe/utils/messages.py", line 59, in _raise_exception
+    raise exc
+      exc = mariadb-dump not found in PATH! This is required to take a backup.
+      inspect = <module 'inspect' from '/opt/homebrew/Cellar/python@3.14/3.14.9/Frameworks/Python.framework/Versions/3.14/lib/python3.14/inspect.py'>
+      msg = 'mariadb-dump not found in PATH! This is required to take a backup.'
+      out = {'message': 'mariadb-dump not found in PATH! This is required to take a backup.', 'as_table': False, 'title': 'Message', 'indicator': 'red', 'raise_exception': 1, '__frappe_exc_id': '8893e832bc8282d0737e02da3ae625482a613e8d566678eae64f7e1d'}
+      raise_exception = frappe.exceptions.ExecutableNotFound
+frappe.exceptions.ExecutableNotFound: mariadb-dump not found in PATH! This is required to take a backup.
+/bin/sh: /opt/homebrew/bin/bench: No such file or directory
+Backup failed for Site manpower.localhost. Database or site_config.json may be corrupted
+Traceback with variables (most recent call last):
+  File "apps/frappe/frappe/commands/site.py", line 881, in backup
+    odb = scheduled_backup(
+      context = CliCtxObj(force=False, profile=False, sites=['manpower.localhost'], verbose=True)
+      with_files = False
+      backup_path = None
+      backup_path_db = None
+      backup_path_files = None
+      backup_path_private_files = None
+      backup_path_conf = None
+      ignore_backup_conf = False
+      verbose = True
+      compress = False
+      include = ''
+      exclude = ''
+      old_backup_metadata = False
+      scheduled_backup = <function scheduled_backup at 0x109cc94e0>
+      exit_code = 0
+      rollback_callback = None
+      site = 'manpower.localhost'
+  File "apps/frappe/frappe/utils/backups.py", line 589, in scheduled_backup
+    return new_backup(
+      older_than = 6
+      ignore_files = True
+      backup_path = None
+      backup_path_db = None
+      backup_path_files = None
+      backup_path_private_files = None
+      backup_path_conf = None
+      ignore_conf = False
+      include_doctypes = ''
+      exclude_doctypes = ''
+      compress = False
+      force = True
+      verbose = True
+      old_backup_metadata = False
+      rollback_callback = frappe.utils.CallbackManager()
+  File "apps/frappe/frappe/utils/backups.py", line 647, in new_backup
+    odb.get_backup(older_than, ignore_files, force=force)
+      older_than = 6
+      ignore_files = True
+      backup_path = None
+      backup_path_db = None
+      backup_path_files = None
+      backup_path_private_files = None
+      backup_path_conf = None
+      ignore_conf = False
+      include_doctypes = ''
+      exclude_doctypes = ''
+      compress = False
+      force = True
+      verbose = True
+      old_backup_metadata = False
+      rollback_callback = frappe.utils.CallbackManager()
+      odb = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261024_120247', user='_e974f0a15eefec3b', verbose=True)
+  File "apps/frappe/frappe/utils/backups.py", line 191, in get_backup
+    self.delete_if_step_fails(self.take_dump, self.backup_path_db)
+      self = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261024_120247', user='_e974f0a15eefec3b', verbose=True)
+      older_than = 6
+      ignore_files = True
+      force = True
+      last_db = False
+      last_file = False
+      last_private_file = False
+      site_config_backup_path = False
+  File "apps/frappe/frappe/utils/backups.py", line 528, in delete_if_step_fails
+    raise e
+      self = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261024_120247', user='_e974f0a15eefec3b', verbose=True)
+      step = <bound method BackupGenerator.take_dump of <frappe.utils.backups.BackupGenerator object at 0x109e896a0>>
+      paths = ('./manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz')
+      path = './manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz'
+  File "apps/frappe/frappe/utils/backups.py", line 523, in delete_if_step_fails
+    step()
+      self = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261024_120247', user='_e974f0a15eefec3b', verbose=True)
+      step = <bound method BackupGenerator.take_dump of <frappe.utils.backups.BackupGenerator object at 0x109e896a0>>
+      paths = ('./manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz')
+      path = './manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz'
+  File "apps/frappe/frappe/utils/backups.py", line 465, in take_dump
+    frappe.throw(
+      self = frappe.utils.backups.BackupGenerator(backup_excludes=[], backup_includes=[], backup_path=None, backup_path_conf='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-site_config_backup.json', backup_path_db='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz', backup_path_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-files.tar', backup_path_private_files='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-private-files.tar', compress_files=False, db_host='127.0.0.1', db_name='_e974f0a15eefec3b', db_port=3306, db_socket=None, db_type='mariadb', exclude_doctypes='', ignore_conf=False, include_doctypes='', old_backup_metadata=False, partial=[], password='E9IAjaEFfgV2Trsh', rollback_callback=frappe.utils.CallbackManager(-), site_slug='manpower_localhost', todays_date='20261024_120247', user='_e974f0a15eefec3b', verbose=True)
+      frappe = <module 'frappe' from 'apps/frappe/frappe/__init__.py'>
+      shlex = <module 'shlex' from '/opt/homebrew/Cellar/python@3.14/3.14.9/Frameworks/Python.framework/Versions/3.14/lib/python3.14/shlex.py'>
+      get_app_branch = <function get_app_branch at 0x109edb110>
+      gzip_exc = '/usr/bin/gzip'
+      database_header_content = ['begin frappe metadata', '[frappe]', 'version = 16.52.0', 'branch = version-16', 'end frappe metadata', '']
+      generated_header = '-- begin frappe metadata
+      -- [frappe]
+      -- version = 16.52.0
+      -- branch = version-16
+      -- end frappe metadata
+      -- 
+      '
+      f = <_io.TextIOWrapper name='./manpower.localhost/private/backups/20261024_120247-manpower_localhost-database.sql.gz' encoding='UTF-8'>
+      cmd = []
+      extra = []
+      get_command = <function get_command at 0x10932eb90>
+      bin = None
+      args = ['--user=_e974f0a15eefec3b', '--host=127.0.0.1', '--port=3306', '--password=E9IAjaEFfgV2Trsh', '--single-transaction', '--quick', '--lock-tables=false', '_e974f0a15eefec3b']
+      bin_name = 'mariadb-dump'
+  File "apps/frappe/frappe/utils/messages.py", line 159, in throw
+    msgprint(
+      msg = 'mariadb-dump not found in PATH! This is required to take a backup.'
+      exc = frappe.exceptions.ExecutableNotFound
+      title = None
+      is_minimizable = False
+      wide = False
+      as_list = False
+      primary_action = None
+      allow_dangerous_html = False
+  File "apps/frappe/frappe/utils/messages.py", line 118, in msgprint
+    _raise_exception()
+      msg = 'mariadb-dump not found in PATH! This is required to take a backup.'
+      title = None
+      raise_exception = frappe.exceptions.ExecutableNotFound
+      as_table = False
+      as_list = False
+      indicator = 'red'
+      alert = False
+      primary_action = None
+      is_minimizable = False
+      wide = False
+      realtime = False
+      allow_dangerous_html = False
+      clean_html = <function clean_html at 0x108d222a0>
+      _raise_exception = <function msgprint.<locals>._raise_exception at 0x109ec1010>
+      inspect = <module 'inspect' from '/opt/homebrew/Cellar/python@3.14/3.14.9/Frameworks/Python.framework/Versions/3.14/lib/python3.14/inspect.py'>
+      out = {'message': 'mariadb-dump not found in PATH! This is required to take a backup.', 'as_table': False, 'title': 'Message', 'indicator': 'red', 'raise_exception': 1, '__frappe_exc_id': 'bc286e4b56fa6077b314bfecb7edb9878304a58421ab511b656f5114'}
+  File "apps/frappe/frappe/utils/messages.py", line 59, in _raise_exception
+    raise exc
+      exc = mariadb-dump not found in PATH! This is required to take a backup.
+      inspect = <module 'inspect' from '/opt/homebrew/Cellar/python@3.14/3.14.9/Frameworks/Python.framework/Versions/3.14/lib/python3.14/inspect.py'>
+      msg = 'mariadb-dump not found in PATH! This is required to take a backup.'
+      out = {'message': 'mariadb-dump not found in PATH! This is required to take a backup.', 'as_table': False, 'title': 'Message', 'indicator': 'red', 'raise_exception': 1, '__frappe_exc_id': 'bc286e4b56fa6077b314bfecb7edb9878304a58421ab511b656f5114'}
+      raise_exception = frappe.exceptions.ExecutableNotFound
+frappe.exceptions.ExecutableNotFound: mariadb-dump not found in PATH! This is required to take a backup.

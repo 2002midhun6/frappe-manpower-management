@@ -1,0 +1,240 @@
+2026-10-23 11:26:00,390 ERROR scheduler Exception in Enqueue Events for Site manpower.localhost
+Traceback (most recent call last):
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 1110, in can_read
+    return self._parser.can_read(timeout)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/_parsers/hiredis.py", line 101, in can_read
+    return self.read_from_socket(timeout=timeout, raise_on_timeout=False)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/_parsers/hiredis.py", line 110, in read_from_socket
+    bufflen = self._sock.recv_into(self._buffer)
+ConnectionResetError: [Errno 54] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 2610, in get_connection
+    connection.can_read()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 1114, in can_read
+    raise ConnectionError(f"Error while reading from {host_error}: {e.args}")
+redis.exceptions.ConnectionError: Error while reading from 127.0.0.1:11001: (54, 'Connection reset by peer')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/retry.py", line 116, in call_with_retry
+    return do()
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 1306, in _connect
+    raise err
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/scheduler.py", line 121, in enqueue_events_for_site
+    enqueue_events()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/scheduler.py", line 143, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 96, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/background_jobs.py", line 677, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/background_jobs.py", line 682, in get_job_status
+    if job := get_job(job_id):
+              ~~~~~~~^^^^^^^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/background_jobs.py", line 688, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/rq/job.py", line 654, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/rq/job.py", line 1011, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/commands/core.py", line 5269, in hgetall
+    return self.execute_command("HGETALL", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/client.py", line 657, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/client.py", line 663, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 2617, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to 127.0.0.1:11001. Connection refused.
+2026-10-23 11:30:00,628 ERROR scheduler Exception in Enqueue Events for Site manpower.localhost
+Traceback (most recent call last):
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/retry.py", line 116, in call_with_retry
+    return do()
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 1306, in _connect
+    raise err
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/scheduler.py", line 121, in enqueue_events_for_site
+    enqueue_events()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/scheduler.py", line 143, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 96, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/background_jobs.py", line 677, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/background_jobs.py", line 682, in get_job_status
+    if job := get_job(job_id):
+              ~~~~~~~^^^^^^^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/background_jobs.py", line 688, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/rq/job.py", line 654, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/rq/job.py", line 1011, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/commands/core.py", line 5269, in hgetall
+    return self.execute_command("HGETALL", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/client.py", line 657, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/client.py", line 663, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to 127.0.0.1:11001. Connection refused.
+2026-10-23 11:34:00,805 ERROR scheduler Exception in Enqueue Events for Site manpower.localhost
+Traceback (most recent call last):
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 855, in connect_check_health
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/retry.py", line 116, in call_with_retry
+    return do()
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 856, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 1306, in _connect
+    raise err
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 1290, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/scheduler.py", line 121, in enqueue_events_for_site
+    enqueue_events()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/scheduler.py", line 143, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 96, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/background_jobs.py", line 677, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/background_jobs.py", line 682, in get_job_status
+    if job := get_job(job_id):
+              ~~~~~~~^^^^^^^^
+  File "/Users/midhung/frappe-bench/apps/frappe/frappe/utils/background_jobs.py", line 688, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/rq/job.py", line 654, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/rq/job.py", line 1011, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/commands/core.py", line 5269, in hgetall
+    return self.execute_command("HGETALL", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/client.py", line 657, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/client.py", line 663, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/utils.py", line 196, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 2603, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 846, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/midhung/frappe-bench/env/lib/python3.14/site-packages/redis/connection.py", line 863, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to 127.0.0.1:11001. Connection refused.
+2026-10-23 12:46:00,332 ERROR scheduler Skipped queueing frappe.monitor.flush because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,344 ERROR scheduler Skipped queueing frappe.email.doctype.email_account.email_account.notify_unreplied because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,345 ERROR scheduler Skipped queueing frappe.email.queue.flush because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,346 ERROR scheduler Skipped queueing erpnext.stock.doctype.repost_item_valuation.repost_item_valuation.run_parallel_reposting because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,346 ERROR scheduler Skipped queueing frappe.automation_engine.scheduler.process_cron because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,348 ERROR scheduler Skipped queueing erpnext.manufacturing.doctype.bom_update_log.bom_update_log.resume_bom_cost_update_jobs because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,348 ERROR scheduler Skipped queueing frappe.email.doctype.notification.notification.trigger_offset_alerts because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,349 ERROR scheduler Skipped queueing frappe.utils.global_search.sync_global_search because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,350 ERROR scheduler Skipped queueing frappe.email.queue.retry_sending_emails because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,351 ERROR scheduler Skipped queueing frappe.automation_engine.drainer.drain_due because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,352 ERROR scheduler Skipped queueing frappe.deferred_insert.save_to_db because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,353 ERROR scheduler Skipped queueing frappe.email.doctype.email_account.email_account.pull because it was found in queue for manpower.localhost
+2026-10-23 12:46:00,354 ERROR scheduler Skipped queueing hrms.hr.doctype.interview.interview.send_interview_reminder because it was found in queue for manpower.localhost
+2026-10-23 20:18:00,833 ERROR scheduler Skipped queueing erpnext.projects.doctype.project.project.collect_project_status because it was found in queue for manpower.localhost
+2026-10-23 20:18:00,861 ERROR scheduler Skipped queueing hrms.hr.doctype.shift_type.shift_type.update_last_sync_of_checkin because it was found in queue for manpower.localhost
+2026-10-24 09:46:00,510 ERROR scheduler Skipped queueing frappe.deferred_insert.save_to_db because it was found in queue for manpower.localhost
+2026-10-24 09:46:00,516 ERROR scheduler Skipped queueing frappe.model.utils.link_count.update_link_count because it was found in queue for manpower.localhost
+2026-10-24 09:46:00,519 ERROR scheduler Skipped queueing frappe.automation_engine.drainer.drain_due because it was found in queue for manpower.localhost
+2026-10-24 09:46:00,523 ERROR scheduler Skipped queueing frappe.email.doctype.notification.notification.trigger_offset_alerts because it was found in queue for manpower.localhost

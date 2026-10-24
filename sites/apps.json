@@ -1,0 +1,40 @@
+{
+    "frappe": {
+        "resolution": {
+            "commit_hash": null,
+            "branch": null
+        },
+        "required": [],
+        "idx": 1,
+        "version": "16.52.0"
+    },
+    "erpnext": {
+        "resolution": {
+            "commit_hash": null,
+            "branch": null
+        },
+        "required": [],
+        "idx": 2,
+        "version": "16.52.0"
+    },
+    "hrms": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "5c72c067c0a3bcc969a49c708b7bec545a046fe9",
+            "branch": "version-16"
+        },
+        "required": [],
+        "idx": 3,
+        "version": "16.52.0"
+    },
+    "manpower_management": {
+        "is_repo": true,
+        "resolution": {
+            "commit_hash": "079a4840911b74f4693ab904314e8f32b0beb1cf",
+            "branch": "version-16"
+        },
+        "required": [],
+        "idx": 4,
+        "version": "0.0.1"
+    }
+}

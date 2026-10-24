@@ -1,0 +1,14 @@
+{
+ "db_name": "_e974f0a15eefec3b",
+ "db_password": "E9IAjaEFfgV2Trsh",
+ "db_type": "mariadb",
+ "db_user": "_e974f0a15eefec3b",
+ "developer_mode": 1,
+ "encryption_key": "W32KGp5nPlzwEo8bUAAd1tViXUYTztI2JqiaAGLAtBk=",
+ "installed_apps": [
+  "frappe",
+  "erpnext",
+  "hrms",
+  "manpower_management"
+ ]
+}

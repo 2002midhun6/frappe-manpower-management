@@ -1,0 +1,6 @@
+2026-10-24 11:02:29,784 INFO ipython === bench console session ===
+2026-10-24 11:02:29,784 INFO ipython frappe.utils.password.update_password(
+    "hr@gmail.com",
+    "hrmanager"
+)
+2026-10-24 11:02:29,784 INFO ipython === session end ===
